@@ -17,6 +17,9 @@ type IProps = {
 };
 
 export default function InformationPage({ title, slices }: IProps) {
+  console.log(title);
+  console.log(slices);
+
   return (
     <>
       <RichText render={title} />
@@ -132,19 +135,36 @@ type PathsResponse = {
   };
 };
 
+export async function getStaticProps({ params }: GetStaticPropsContext) {
+  const uid = params?.uid! as string;
+  console.log(uid);
+
+  if (uid) {
+    const data = await fetchFromPrismic<PrismicResponse>(query, { uid });
+
+    console.log(data);
+
+    return {
+      props: {
+        title: data.informationPage.title,
+        slices: data.informationPage.slices,
+      },
+    };
+  }
+}
+
 export async function getStaticPaths() {
   const data = await fetchFromPrismic<PathsResponse>(pathsQuery);
 
-  console.log({
-    paths: data.allInformationPages.edges.map((res) => {
+  console.log(
+    data.allInformationPages.edges.map((res) => {
       return {
         params: {
           uid: res.node._meta.uid,
         },
       };
-    }),
-    fallback: true,
-  });
+    })
+  );
 
   return {
     paths: data.allInformationPages.edges.map((res) => {
@@ -154,20 +174,6 @@ export async function getStaticPaths() {
         },
       };
     }),
-    fallback: true,
+    fallback: 'blocking',
   };
-}
-
-export async function getStaticProps({ params }: GetStaticPropsContext) {
-  const uid = params?.uid! as string;
-  if (uid) {
-    const data = await fetchFromPrismic<PrismicResponse>(query, { uid });
-
-    return {
-      props: {
-        title: data.informationPage.title,
-        slices: data.informationPage.slices,
-      },
-    };
-  }
 }
