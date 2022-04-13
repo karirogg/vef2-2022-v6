@@ -135,6 +135,17 @@ type PathsResponse = {
 export async function getStaticPaths() {
   const data = await fetchFromPrismic<PathsResponse>(pathsQuery);
 
+  console.log({
+    paths: data.allInformationPages.edges.map((res) => {
+      return {
+        params: {
+          uid: res.node._meta.uid,
+        },
+      };
+    }),
+    fallback: true,
+  });
+
   return {
     paths: data.allInformationPages.edges.map((res) => {
       return {
@@ -149,12 +160,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
   const uid = params?.uid! as string;
-  const data = await fetchFromPrismic<PrismicResponse>(query, { uid });
+  if (uid) {
+    const data = await fetchFromPrismic<PrismicResponse>(query, { uid });
 
-  return {
-    props: {
-      title: data.informationPage.title,
-      slices: data.informationPage.slices,
-    },
-  };
+    return {
+      props: {
+        title: data.informationPage.title,
+        slices: data.informationPage.slices,
+      },
+    };
+  }
 }
