@@ -15,7 +15,6 @@ type IProps = {
 };
 
 export default function Home({ title, content, links }: IProps) {
-  console.log(links);
   return (
     <>
       <RichText render={title} />
