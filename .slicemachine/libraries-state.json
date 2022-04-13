@@ -1,0 +1,290 @@
+{
+  "slices": {
+    "components": {
+      "accordion": {
+        "library": "slices",
+        "id": "accordion",
+        "name": "Accordion",
+        "description": "Accordion",
+        "model": {
+          "id": "accordion",
+          "type": "SharedSlice",
+          "name": "Accordion",
+          "description": "Accordion",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Accordion",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": "This is where it all begins...",
+                    "allowTargetBlank": true,
+                    "single": "heading2"
+                  }
+                }
+              },
+              "items": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Item Title",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "heading3"
+                  }
+                },
+                "content": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Item Content",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "accordion",
+            "items": [
+              {
+                "title": [
+                  {
+                    "type": "heading3",
+                    "text": "Harness sexy mindshare",
+                    "spans": []
+                  }
+                ],
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "text": "Ullamco consequat cupidatat ea.",
+                    "spans": []
+                  }
+                ]
+              },
+              {
+                "title": [
+                  {
+                    "type": "heading3",
+                    "text": "Morph holistic supply-chains",
+                    "spans": []
+                  }
+                ],
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "text": "Veniam veniam aliquip ullamco ea incididunt ut ex proident et cupidatat proident quis. Anim laborum nisi et officia exercitation sint anim consequat sint laboris pariatur. Aliqua nostrud do anim ad eiusmod.",
+                    "spans": []
+                  }
+                ]
+              },
+              {
+                "title": [
+                  {
+                    "type": "heading3",
+                    "text": "Extend e-business e-tailers",
+                    "spans": []
+                  }
+                ],
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "text": "Dolore ea Lorem in quis laboris tempor eiusmod qui. Duis mollit anim sint veniam fugiat ipsum.",
+                    "spans": []
+                  }
+                ]
+              },
+              {
+                "title": [
+                  {
+                    "type": "heading3",
+                    "text": "Engage sexy communities",
+                    "spans": []
+                  }
+                ],
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "text": "Aute excepteur excepteur duis ullamco pariatur commodo nulla consectetur est sint duis esse nostrud amet. Sint ipsum mollit ullamco elit consequat esse anim ullamco exercitation ut ex nulla aliquip.",
+                    "spans": []
+                  }
+                ]
+              }
+            ],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading2",
+                  "text": "Synergize bricks-and-clicks supply-chains",
+                  "spans": []
+                }
+              ]
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
+      "image": {
+        "library": "slices",
+        "id": "image",
+        "name": "Image",
+        "description": "Image",
+        "model": {
+          "id": "image",
+          "type": "SharedSlice",
+          "name": "Image",
+          "description": "Image",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Image",
+              "primary": {
+                "caption": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Caption",
+                    "placeholder": "This is where it all begins...",
+                    "allowTargetBlank": true,
+                    "single": "paragraph"
+                  }
+                },
+                "image": {
+                  "type": "Image",
+                  "config": {
+                    "constraint": {},
+                    "thumbnails": [],
+                    "label": "Image"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "image",
+            "items": [],
+            "primary": {
+              "caption": [
+                {
+                  "type": "paragraph",
+                  "text": "Quis magna id labore dolor eiusmod nulla irure sit nulla exercitation adipisicing incididunt commodo consectetur.",
+                  "spans": []
+                }
+              ],
+              "image": {
+                "dimensions": {
+                  "width": 900,
+                  "height": 500
+                },
+                "alt": "Placeholder image",
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=900&h=500&fit=crop"
+              }
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
+      "text": {
+        "library": "slices",
+        "id": "text",
+        "name": "Text",
+        "description": "Text",
+        "model": {
+          "id": "text",
+          "type": "SharedSlice",
+          "name": "Text",
+          "description": "Text",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Text",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": "This is where it all begins...",
+                    "allowTargetBlank": true,
+                    "single": "heading2"
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "paragraph",
+                    "label": "Description",
+                    "placeholder": "A nice description of your feature"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "text",
+            "items": [],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading2",
+                  "text": "Extend collaborative synergies",
+                  "spans": []
+                }
+              ],
+              "description": [
+                {
+                  "type": "paragraph",
+                  "text": "Irure magna voluptate anim nisi consectetur irure sunt ullamco minim culpa do ut id.",
+                  "spans": []
+                }
+              ]
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "10fb67f8-458c-400c-856c-79347cb754cd",
+  "uid": "rerum-nam-nulla",
+  "type": "front-page",
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Enable open-source infrastructures",
+        "spans": []
+      }
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Nisi culpa pariatur pariatur cillum consequat esse. Ut pariatur culpa exercitation dolore ea quis duis ad adipisicing dolore. Eiusmod dolor dolor ut consequat enim.",
+        "spans": []
+      }
+    ]
+  }
+}
