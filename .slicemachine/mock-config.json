@@ -73,6 +73,18 @@
           }
         }
       }
+    },
+    "List": {
+      "default": {
+        "items": {
+          "title": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
     }
   }
 }

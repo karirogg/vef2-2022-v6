@@ -214,6 +214,105 @@
         },
         "screenshotPaths": {}
       },
+      "list": {
+        "library": "slices",
+        "id": "list",
+        "name": "List",
+        "description": "List",
+        "model": {
+          "id": "list",
+          "type": "SharedSlice",
+          "name": "List",
+          "description": "List",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "List",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "heading1",
+                    "label": "Title",
+                    "placeholder": "This is where it all begins..."
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "paragraph",
+                    "label": "Description",
+                    "placeholder": "A nice description of your feature"
+                  }
+                }
+              },
+              "items": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Item title",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "list",
+            "items": [
+              {
+                "title": [
+                  {
+                    "type": "paragraph",
+                    "text": "Sunt amet pariatur eu reprehenderit esse quis quis ex veniam irure duis do incididunt mollit aute. Velit consectetur velit nostrud do proident et eiusmod culpa officia excepteur ex consequat labore adipisicing. Eu amet cillum dolor laborum sit quis qui proident.",
+                    "spans": []
+                  }
+                ]
+              },
+              {
+                "title": [
+                  {
+                    "type": "paragraph",
+                    "text": "Culpa tempor duis dolor elit labore amet sit. Velit commodo tempor aliquip officia veniam. Laboris enim amet magna occaecat.",
+                    "spans": []
+                  }
+                ]
+              }
+            ],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading1",
+                  "text": "Embrace dot-com models",
+                  "spans": []
+                }
+              ],
+              "description": [
+                {
+                  "type": "paragraph",
+                  "text": "Non velit velit mollit amet laborum laborum quis et elit cupidatat. Pariatur consequat nulla ullamco ullamco deserunt est ullamco ex anim cupidatat aute amet quis.",
+                  "spans": []
+                }
+              ]
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
       "text": {
         "library": "slices",
         "id": "text",

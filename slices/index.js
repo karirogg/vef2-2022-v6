@@ -2,16 +2,19 @@
 
 import Accordion from './Accordion';
 import Image from './Image';
+import List from './List';
 import Text from './Text';
 
 export {
 	Accordion,
 	Image,
+	List,
 	Text,
 };
 
 export const components = {
 	accordion: Accordion,
 	image: Image,
+	list: List,
 	text: Text,
 };

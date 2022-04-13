@@ -149,22 +149,13 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
         title: data.informationPage.title,
         slices: data.informationPage.slices,
       },
+      revalidate: 10,
     };
   }
 }
 
 export async function getStaticPaths() {
   const data = await fetchFromPrismic<PathsResponse>(pathsQuery);
-
-  console.log(
-    data.allInformationPages.edges.map((res) => {
-      return {
-        params: {
-          uid: res.node._meta.uid,
-        },
-      };
-    })
-  );
 
   return {
     paths: data.allInformationPages.edges.map((res) => {
