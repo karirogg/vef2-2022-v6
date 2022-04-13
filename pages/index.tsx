@@ -22,9 +22,11 @@ export default function Home({ title, content, links }: IProps) {
       <h2>Hlekkir</h2>
       {links.map((link, i) => {
         return (
-          <Link key={i} href={`/${link.uid}`} passHref>
-            <a>{link.title}</a>
-          </Link>
+          <div key={i}>
+            <Link href={`/${link.uid}`} passHref>
+              <a>{link.title}</a>
+            </Link>
+          </div>
         );
       })}
     </>

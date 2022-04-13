@@ -7,19 +7,17 @@ import ImageViewer from '../components/ImageViewer/ImageViewer';
 import {
   AccordionData,
   ImageTypeData,
+  ListData,
   PrismicRichText,
   TextData,
 } from '../types';
 
 type IProps = {
   title: PrismicRichText;
-  slices: Array<AccordionData | ImageTypeData | TextData>;
+  slices: Array<AccordionData | ImageTypeData | TextData | ListData>;
 };
 
 export default function InformationPage({ title, slices }: IProps) {
-  console.log(title);
-  console.log(slices);
-
   return (
     <>
       <RichText render={title} />
@@ -33,14 +31,14 @@ export default function InformationPage({ title, slices }: IProps) {
               items={slice.variation.items}
             />
           );
-        } else if (slice.__typename == 'InformationPageSlicesText') {
+        } else if (slice.__typename === 'InformationPageSlicesText') {
           return (
             <div key={i}>
               <RichText render={slice.variation.primary.title} />
               <RichText render={slice.variation.primary.description} />
             </div>
           );
-        } else if (slice.__typename == 'InformationPageSlicesImage') {
+        } else if (slice.__typename === 'InformationPageSlicesImage') {
           const { caption, image } = slice.variation.primary;
           return (
             <ImageViewer
@@ -49,6 +47,22 @@ export default function InformationPage({ title, slices }: IProps) {
               imgUrl={image.url}
               alt={image.alt}
             />
+          );
+        } else if (slice.__typename === 'InformationPageSlicesList') {
+          const { title, description } = slice.variation.primary;
+
+          return (
+            <div key={i}>
+              <RichText render={title} />
+              <RichText render={description} />
+              <ol>
+                {slice.variation.items.map((item, j) => (
+                  <li key={j}>
+                    <RichText render={item.title} />
+                  </li>
+                ))}
+              </ol>
+            </div>
           );
         }
       })}
@@ -95,6 +109,19 @@ query($uid: String = "golf") {
           }
         }
       }
+      ... on InformationPageSlicesList {
+        variation {
+         	... on InformationPageSlicesListDefault {
+            primary {
+              title
+              description
+            }
+            items {
+              title
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -137,12 +164,9 @@ type PathsResponse = {
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
   const uid = params?.uid! as string;
-  console.log(uid);
 
   if (uid) {
     const data = await fetchFromPrismic<PrismicResponse>(query, { uid });
-
-    console.log(data);
 
     return {
       props: {

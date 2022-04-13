@@ -41,3 +41,18 @@ export type TextData = {
     };
   };
 };
+
+export type ListData = {
+  __typename: 'InformationPageSlicesList';
+  variation: {
+    primary: {
+      title: PrismicRichText;
+      description: PrismicRichText;
+    };
+    items: [
+      {
+        title: PrismicRichText;
+      }
+    ];
+  };
+};
