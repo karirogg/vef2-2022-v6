@@ -20,6 +20,7 @@ export default function Home({ title, content, links }: IProps) {
     <>
       <RichText render={title} />
       <RichText render={content} />
+      <h2>Hlekkir</h2>
       {links.map((link, i) => {
         return (
           <Link key={i} href={`/${link.uid}`} passHref>
@@ -81,7 +82,7 @@ query {
 }
 `;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const data = await fetchFromPrismic<PrismicResponse>(query);
 
   const { title, content } = data.allFrontPages.edges[0].node;

@@ -1,7 +1,9 @@
-import Image from 'next/image';
+import { GetStaticPropsContext } from 'next';
+import Link from 'next/link';
 import { RichText } from 'prismic-reactjs';
 import { fetchFromPrismic } from '../api/prismic';
 import Accordion from '../components/Accordion/Accordion';
+import ImageViewer from '../components/ImageViewer/ImageViewer';
 import {
   AccordionData,
   ImageTypeData,
@@ -18,6 +20,7 @@ export default function InformationPage({ title, slices }: IProps) {
   return (
     <>
       <RichText render={title} />
+      <Link href="/">Til baka</Link>
       {slices.map((slice, i) => {
         if (slice.__typename === 'InformationPageSlicesAccordion') {
           return (
@@ -37,15 +40,12 @@ export default function InformationPage({ title, slices }: IProps) {
         } else if (slice.__typename == 'InformationPageSlicesImage') {
           const { caption, image } = slice.variation.primary;
           return (
-            <div key={i}>
-              <Image
-                width={image.dimensions.width}
-                height={image.dimensions.height}
-                alt={image.alt}
-                src={image.url}
-              />
-              <RichText render={caption} />
-            </div>
+            <ImageViewer
+              key={i}
+              caption={caption}
+              imgUrl={image.url}
+              alt={image.alt}
+            />
           );
         }
       })}
@@ -97,12 +97,6 @@ query($uid: String = "golf") {
 }
 `;
 
-type SSParams = {
-  params: {
-    uid: string;
-  };
-};
-
 type PrismicResponse = {
   informationPage: {
     title: PrismicRichText;
@@ -110,8 +104,51 @@ type PrismicResponse = {
   };
 };
 
-export async function getServerSideProps({ params }: SSParams) {
-  const { uid } = params;
+const pathsQuery = `
+query {
+  allInformationPages {
+    edges {
+      node {
+        _meta {
+          uid
+        }
+      }
+    }
+  }
+}
+`;
+
+type PathsResponse = {
+  allInformationPages: {
+    edges: [
+      {
+        node: {
+          _meta: {
+            uid: string;
+          };
+        };
+      }
+    ];
+  };
+};
+
+export async function getStaticPaths() {
+  const data = await fetchFromPrismic<PathsResponse>(pathsQuery);
+
+  return {
+    paths: data.allInformationPages.edges.map((res) => {
+      return {
+        params: {
+          uid: res.node._meta.uid,
+        },
+      };
+    }),
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params }: GetStaticPropsContext) {
+  const uid = params?.uid! as string;
   const data = await fetchFromPrismic<PrismicResponse>(query, { uid });
 
   return {
