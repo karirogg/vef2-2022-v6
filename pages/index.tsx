@@ -99,5 +99,6 @@ export async function getStaticProps() {
       content,
       links,
     },
+    revalidate: 10,
   };
 }
